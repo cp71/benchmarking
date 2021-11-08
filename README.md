@@ -1,2 +1,2 @@
-# benchmarking
-Benchmarking with Annotations
+# benchmark
+A Python library for disaggregating time series
