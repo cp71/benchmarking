@@ -9,7 +9,7 @@ import sklearn.utils.validation as sklearn_validation
 
 class Estimator(BaseEstimator, TransformerMixin):
     """ 
-    An scikit-learn compatible estimator for benchmarking.
+    A scikit-learn compatible estimator for benchmarking.
     
     Parameters
     ----------
