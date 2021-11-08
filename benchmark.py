@@ -8,6 +8,9 @@ from sklearn.base import BaseEstimator, TransformerMixin
 import sklearn.utils.validation as sklearn_validation
 
 class Estimator(BaseEstimator, TransformerMixin):
+    
+    
+    
     def __init__(self, linear_constraint: Optional[ArrayLike] = None, quadratic_constraint_weight: Optional[Union[float,int]] = None, solver: Optional[Callable] = None):
         self.linear_constraint = linear_constraint
         self.quadratic_constraint_weight = quadratic_constraint_weight
