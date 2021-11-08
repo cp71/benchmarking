@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import statsmodels.tsa.interp
 
-ROOT = pathlib.Path(__file__).resolve().parent
+ROOT = pathlib.Path(__file__).resolve().parent / "benchmark"
 sys.path.append(str(ROOT))
 import benchmark
 
@@ -42,7 +42,7 @@ def test_denton():
     frequency = len(high_frequency_data) // len(low_frequency_data)
     linear_constraint = np.ones(frequency)
 
-    estimator = Estimator(linear_constraint=linear_constraint)
+    estimator = benchmark.Estimator(linear_constraint=linear_constraint)
     estimator.fit(high_frequency_data, low_frequency_data)
 
     interpolant = estimator.predict()
@@ -51,10 +51,8 @@ def test_denton():
     np.testing.assert_almost_equal(denton_interpolant, interpolant, 1)
     
 @pytest.mark.slow
-def test_forex(get_data):
+def test_statsmodels(get_data):
     data = get_data
-    
-    data = pd.read_csv("GDP.csv")
 
     data = data.loc[data["Country Name"].isin(["Australia", "Brazil"])].copy()
     data = data.drop(columns = ["Country Code", "Indicator Name", "Indicator Code"]).set_index("Country Name").T.copy()
@@ -77,7 +75,7 @@ def test_forex(get_data):
     data["Brazil_Upsample"] = brazil_upsample * 2
     data[["Brazil","Brazil_Upsample"]].corr().iloc[0,1]
 
-    estimator = Estimator()
+    estimator = benchmark.Estimator()
     estimator.fit(high_frequency_data, low_frequency_data)
     
     upsampled = estimator.predict()
