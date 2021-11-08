@@ -1,3 +1,5 @@
+# must run pytest in current working directory
+
 import pytest
 import sys
 import pathlib
@@ -5,9 +7,9 @@ import numpy as np
 import pandas as pd
 import statsmodels.tsa.interp
 
-ROOT = pathlib.Path().resolve().parent 
+ROOT = pathlib.Path().resolve().parent
 sys.path.append(str(ROOT))
-import benchmark
+from benchmark.disaggregation import Estimator
 
 @pytest.fixture
 def get_data():
@@ -22,7 +24,7 @@ def test_imf():
     frequency = len(high_frequency_data[:truncation]) // len(low_frequency_data)
     linear_constraint = np.ones(frequency)
     
-    estimator = benchmark.Estimator(linear_constraint=linear_constraint)
+    estimator = Estimator(linear_constraint=linear_constraint)
     estimator.fit(high_frequency_data[:truncation], low_frequency_data)
     
     interpolant = estimator.predict()
@@ -42,7 +44,7 @@ def test_denton():
     frequency = len(high_frequency_data) // len(low_frequency_data)
     linear_constraint = np.ones(frequency)
 
-    estimator = benchmark.Estimator(linear_constraint=linear_constraint)
+    estimator = Estimator(linear_constraint=linear_constraint)
     estimator.fit(high_frequency_data, low_frequency_data)
 
     interpolant = estimator.predict()
@@ -75,7 +77,7 @@ def test_statsmodels(get_data):
     data["Brazil_Upsample"] = brazil_upsample * 2
     data[["Brazil","Brazil_Upsample"]].corr().iloc[0,1]
 
-    estimator = benchmark.Estimator()
+    estimator = Estimator()
     estimator.fit(high_frequency_data, low_frequency_data)
     
     upsampled = estimator.predict()

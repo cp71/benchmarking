@@ -14,9 +14,15 @@ DESCRIPTION = "disaggregation of time series"
 VERSION = max_version
 REQUIRES_PYTHON = ">=3.6"
 REQUIRED = ["numpy", "scikit-learn"]
+MAINTAINER = 'CP'
+MAINTAINER_EMAIL = 'policast@cims.nyu.edu'
+URL = "https://github.com/cp71/benchmarking"
 
 setup(name = NAME,
       version = VERSION,
+      maintainer=MAINTAINER,
+      maintainer_email=MAINTAINER_EMAIL,
+      url = URL,
       description = DESCRIPTION,
       python_requires = REQUIRES_PYTHON,
       packages = find_packages(exclude = ["tests", "*.tests", "*.tests.*", "tests.*"]),
