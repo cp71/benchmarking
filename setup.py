@@ -13,7 +13,7 @@ NAME = "benchmark"
 DESCRIPTION = "disaggregation of time series"
 VERSION = max_version
 REQUIRES_PYTHON = ">=3.6"
-REQUIRED = ["numpy", "typing", "scikit-learn"]
+REQUIRED = ["numpy", "scikit-learn"]
 
 setup(name = NAME,
       version = VERSION,

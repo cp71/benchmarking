@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import statsmodels.tsa.interp
 
-ROOT = pathlib.Path(__file__).resolve().parent / "benchmark"
+ROOT = pathlib.Path(__file__).resolve().parent 
 sys.path.append(str(ROOT))
 import benchmark
 

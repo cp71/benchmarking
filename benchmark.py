@@ -39,7 +39,7 @@ class Estimator(BaseEstimator, TransformerMixin):
         sklearn_validation.check_is_fitted(self, 'interpolant')
         return self.interpolant
     
-    def score(self):
+    def score(self, X = None, y = None):
         sklearn_validation.check_is_fitted(self, 'interpolant')
         model = CCA(n_components=1)
         X_c, Y_c = model.fit_transform(self.interpolant.reshape(-1,self.frequency), self.low_frequency_data.reshape(-1,1))
