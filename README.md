@@ -1,2 +1,2 @@
 # benchmark
-A Python library for disaggregating time series
+A Python library for Mixed Frequency Data 
