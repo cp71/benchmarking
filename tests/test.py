@@ -9,7 +9,7 @@ import statsmodels.tsa.interp
 
 ROOT = pathlib.Path().resolve().parent
 sys.path.append(str(ROOT))
-from benchmark.disaggregation import Estimator
+from benchmark.disaggregate import Estimator
 
 @pytest.fixture
 def get_data():
