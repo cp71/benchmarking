@@ -7,7 +7,7 @@ from sklearn.cross_decomposition import CCA
 from sklearn.base import BaseEstimator, TransformerMixin
 import sklearn.utils.validation as sklearn_validation
 
-import solvers 
+from . import solvers 
 
 class Estimator(BaseEstimator, TransformerMixin):
     """ 
