@@ -9,7 +9,7 @@ def exact(high_frequency_data: ArrayLike,
            quadratic_constraint_weight: Union[float,int]) -> ArrayLike:
 
     t = len(low_frequency_data)
-    T = high_frequency_data
+    T = len(high_frequency_data)
     k = T // t
 
     constraints_matrix = np.kron(np.eye(t), linear_constraint.reshape(-1,1))
